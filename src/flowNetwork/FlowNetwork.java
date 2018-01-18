@@ -3,17 +3,14 @@ package flowNetwork;
 import graph.Graph;
 import graph.Node;
 import graph.NodeTypeEnum;
-import lombok.Getter;
 
 import java.util.HashSet;
-
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 import static java.lang.System.exit;
 
-@Getter
 public class FlowNetwork {
     private final FlowNode.STFlowNode source;
     private final FlowNode.STFlowNode sink;
@@ -38,6 +35,22 @@ public class FlowNetwork {
         deleteRedundantNodes();
     }
 
+    public FlowNode.STFlowNode getSource(){
+        return source;
+    }
+
+    public FlowNode.STFlowNode getSink(){
+        return sink;
+    }
+
+    public Set<FlowNode> getNodes(){
+        return nodes;
+    }
+
+    public Set<FlowEdge> getEdges(){
+        return edges;
+    }
+
     public void printNetwork(){
         System.out.print("NODES ");
         printOutputNodes(source);
@@ -47,7 +60,6 @@ public class FlowNetwork {
             printOutputNodes(node);
             System.out.print("\n");
         }
-
     }
 
     public long countValves(){
@@ -85,6 +97,7 @@ public class FlowNetwork {
         nodes.removeIf(n -> n.getInput().isEmpty() && !n.equals(source));
     }
 
+    //delete nodes which have no output edges
     private void deleteNoOutputNodes(final FlowNode flowNode){
         if(nodes.contains(flowNode) && flowNode.getOutput().isEmpty()) {
             final Set<FlowEdge> input = new HashSet<>(flowNode.getInput());
@@ -125,6 +138,7 @@ public class FlowNetwork {
         }
     }
 
+    //create sink in network from nodes in graph marked as to cut
     private void buildSink(final Graph graph){
         final Set<Node> sinkNodes = graph.getNodesToCut().stream()
                 .map(id -> graph.findNode(id))
@@ -137,6 +151,7 @@ public class FlowNetwork {
         sink.getNodes().addAll(sinkNodes);
     }
 
+    //create source in network from nodes in graph of type source
     private void buildSource(final Graph graph){
         final Set<Node> sourceNodes = graph.getNodes().stream()
                 .filter(n -> n.getType() == NodeTypeEnum.S)

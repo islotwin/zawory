@@ -1,11 +1,9 @@
 package graph;
 
-import lombok.Getter;
 
 import java.util.HashSet;
 import java.util.Set;
 
-@Getter
 public class Graph {
     private final Set<Node> nodes;
     private final Set<Edge> edges;
@@ -24,4 +22,15 @@ public class Graph {
                 .orElseThrow(() -> new RuntimeException());
     }
 
+    public Set<Node> getNodes(){
+        return nodes;
+    }
+
+    public Set<Edge> getEdges(){
+        return edges;
+    }
+
+    public Set<Integer> getNodesToCut(){
+        return nodesToCut;
+    }
 }
