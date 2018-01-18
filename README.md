@@ -20,9 +20,9 @@ Aby znaleźć najmniejszy podzbiór zaworów, które odetną grupę wybranych wi
 3. Najmniejszy znaleziony zbiór jest rozwiązaniem
 
 ### Tryby wykonania
--m1 < filename.txt (czytanie grafu z pliku)
--m2 n m (generowanie grafu: n - liczba zaworów w grafie, m - współczynnik gęstości grafu)
--m3 m n o p r(generowanie wielu przypadków grafów: n - liczba skoków, m - początkowa liczba zaworów w grafie, o - wielkość skoku liczby zaworów, p - liczba powtórzeń dla każdej wielkości n, r - gęstość grafu)
+* -m1 < filename.txt (czytanie grafu z pliku)
+* -m2 n m (generowanie grafu: n - liczba zaworów w grafie, m - współczynnik gęstości grafu)
+* -m3 m n o p r(generowanie wielu przypadków grafów: n - liczba skoków, m - początkowa liczba zaworów w grafie, o - wielkość skoku liczby zaworów, p - liczba powtórzeń dla każdej wielkości n, r - gęstość grafu)
 
 ### Wejście
 Wejściem jest graf w postaci:
